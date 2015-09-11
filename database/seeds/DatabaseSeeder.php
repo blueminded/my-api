@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Maker;
 
 class DatabaseSeeder extends Seeder {
 
@@ -12,9 +13,12 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
+		DB::statement("SET foreign_key_checks = 0");
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		$this->call('MakerTableSeeder');
+		$this->call('VehicleTableSeeder');
+		DB::statement("SET foreign_key_checks = 1");
 	}
 
 }
