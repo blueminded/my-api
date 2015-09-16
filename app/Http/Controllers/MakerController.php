@@ -78,9 +78,21 @@ class MakerController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(CreateMakerRequest $request, $id)
 	{
-		//
+
+		$maker = Maker::find($id);
+
+		if(!$maker){
+			return response()->json(['error'=>'This maker does not exist'], 404);
+		}
+
+		$maker->name = $request->get('name');
+		$maker->phone = $request->get('phone');
+		$maker->save();
+
+		return response()->json(['message'=>'The maker has been updated'],200);
+
 	}
 
 	/**
