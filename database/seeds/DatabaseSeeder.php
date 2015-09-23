@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('MakerTableSeeder');
 		$this->call('VehicleTableSeeder');
+		$this->call('UserTableSeeder');
 		DB::statement("SET foreign_key_checks = 1");
 	}
 
