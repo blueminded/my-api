@@ -11,7 +11,7 @@ use App\Http\Requests\StoreVehicleRequest;
 class MakerVehicleController extends Controller {
 
 	function __construct() {
-		$this->middleware('auth.basic', ['except'=>'index','show']);
+		$this->middleware('auth.basic.once', ['except'=>'index','show']);
 	}
 	/**
 	 * Display a listing of the resource.
