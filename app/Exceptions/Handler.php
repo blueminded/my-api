@@ -2,7 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class Handler extends ExceptionHandler {
 
 	/**
@@ -36,6 +36,12 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+		if($e instanceof NotFoundHttpException){
+			return response()->json(['message'=>'verify your request'], 400);
+		}else{
+			return response()->json(['message'=>'Unexpected error. Try again'], 500);
+		}
+
 		if ($this->isHttpException($e))
 		{
 			return $this->renderHttpException($e);
