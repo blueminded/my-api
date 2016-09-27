@@ -36,7 +36,7 @@ class OnceAuth implements Middleware {
         $fails = $this->auth->onceBasic();
 
         if($fails){
-            return response()->json(['message'=>'you have not access to this kind of request'],200);
+            return response()->json(['message'=>'you have not access to this kind of request'],401);
         }
         return $this->auth->onceBasic() ?: $next($request);
     }

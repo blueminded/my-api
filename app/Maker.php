@@ -6,6 +6,8 @@ class Maker extends Model {
 
 	protected $fillable = ['name', 'phone'];
 
+    protected $hidden = ['id','created_at','updated_at'];
+
     public function vehicles()
     {
         return $this->hasMany('App\Vehicle');
