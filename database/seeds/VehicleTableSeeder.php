@@ -14,13 +14,13 @@ class VehicleTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for ($i=0; $i < 6; $i++) {
+        for ($i=0; $i < 500; $i++) {
             Vehicle::create([
                 'color'=>$faker->safeColorName(),
                 'power'=>$faker->randomNumber(),
                 'capacity'=>$faker->randomFloat(),
                 'speed'=>$faker->randomFloat(),
-                'maker_id'=>$faker->numberBetween(1,5),
+                'maker_id'=>$faker->numberBetween(1,200),
             ]);
         }
     }

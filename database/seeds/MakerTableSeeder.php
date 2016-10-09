@@ -14,7 +14,7 @@ class MakerTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for ($i=0; $i < 6; $i++) {
+        for ($i=0; $i < 200; $i++) {
             Maker::create([
                 'name'=>$faker->word(),
                 'phone'=>$faker->randomDigit(5)

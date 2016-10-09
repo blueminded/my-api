@@ -20,8 +20,8 @@ class MakerController extends Controller {
 	 */
 	public function index()
 	{
-		$makers = Maker::all();
-		return response()->json(['data'=>$makers], 200);
+		$makers = Maker::simplePaginate(15);
+		return response()->json(['data'=>$makers->items(), 'pagination'=>['prev'=>$makers->previousPageUrl(), 'next'=>$makers->nextPageUrl()]], 200);
 	}
 
 	/**
@@ -32,8 +32,8 @@ class MakerController extends Controller {
 	public function store(CreateMakerRequest $request)
 	{
 		$data = $request->only('name','phone');
-		if(Maker::create($data)){
-			return response()->json(['message'=>'Maker was created'], 200);
+		if($maker = Maker::create($data)){
+			return response()->json(['message'=>"Maker was created with id:{$maker->id}"], 200);
 		}
 
 		return response()->json(['message'=>'There was a problem'], 422);

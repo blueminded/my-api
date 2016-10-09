@@ -44,9 +44,9 @@ class MakerVehicleController extends Controller {
 
 		$data = $request->all();
 
-		$maker->vehicles()->create($data);
+		$vehicle = $maker->vehicles()->create($data);
 
-		return response()->json(['message'=>'The vehicle was created'],200);
+		return response()->json(['message'=>"The vehicle was created with id: {$vehicle->id}"],200);
 	}
 
 	/**
